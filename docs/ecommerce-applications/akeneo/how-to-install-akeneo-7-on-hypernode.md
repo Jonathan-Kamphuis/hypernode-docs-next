@@ -102,7 +102,7 @@ hypernode-systemctl preinstall akeneo_7_0
 
 ## Download and Install Akeneo 7 Manually Using the Command Line
 
-If you don't want to use the pre-install image, than follow the steps below to manually download and install Akeneo in `/data/web/akeneo`
+If you don't want to use the pre-install image, then follow the steps below to manually download and install Akeneo in `/data/web/akeneo`
 
 ## Configuring Node.js v18
 
