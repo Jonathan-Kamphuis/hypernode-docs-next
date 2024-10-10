@@ -155,6 +155,20 @@ Importer:
   --import-dir IMPORT_DIR
                         Location of the imported nginx directory
 
+# Hypernode-systemctl
+## A tool which allows you to use specific root commands as a non-root user.
+usage: hypernode-systemctl [-h] [--verbose]
+                           {settings,alternative_php_versions,show,whitelist,block_attack,xgrade,autoscaling,list_xgrades,attach_backup,list_backups,create_backup,preinstall,brancher}
+
+## List enabled alternative PHP Versions.
+hypernode-systemctl alternative_php_versions list
+
+## Enable alternative PHP Version.
+hypernode-systemctl alternative_php_versions [Version | eg. 8.0]
+
+## Manually create a backup. Only available if you are on the standard SLA. (Not on basic)
+hypernode-systemctl create_backup
+> Create backup job posted, see hypernode-log (or livelog) for job progress. This backup can be attached by using the 'hypernode-systemctl attach_backup' command. 
 
 
 # NGINX configuration
