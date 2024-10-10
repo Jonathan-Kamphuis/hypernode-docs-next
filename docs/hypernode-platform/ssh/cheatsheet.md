@@ -22,6 +22,19 @@ It also functions as a method of documenting our custom commands in a more organ
 pnl --yesterday --php --bots --fields ua | sort | uniq -c | sort -n | tail -n 5; \
 pnl --today --php --bots --fields ua | sort | uniq -c | sort -n | tail -n 5;
 
+### You may also use a loop to go through more than 1 day in 1 command: 
+#### Show last 7 days of bot traffic by day.
+for i in {00..6}; do
+    printf "Days ago: $i \n"
+    if [ "$i" -eq 0 ]; then
+        hypernode-parse-nginx-log --today --php --bots --fields ua | sort | uniq -c | sort -n | tail -n 5
+        printf "\n"
+    else
+        hypernode-parse-nginx-log --days-ago "$i" --php --bots --fields ua | sort | uniq -c | sort -n | tail -n 5
+        printf "\n"
+    fi
+done
+
 ### List the 5 IP addresses that sent the most requests to the server.
 pnl --today  --fields ip | sort | uniq -c | sort -n | tail -n 5
 
@@ -70,6 +83,15 @@ options:
 
 # Hypernode-Manage-Vhosts \ HMV
  
+## Enabling Varnish
+hmv [VHOST] --varnish
+
+## Request free SSL certificates using LetsEncrypt & force HTTPS
+hmv --all --https --force-https
+
+## Manually set webroot directory
+hmv [VHOST/Domain] --webroot /data/web/exampledirectory
+
 ## Embedded documentation
 hmv --help
 usage: main.py [-h] [--all] [-v] [--varnish] [--default-server]
@@ -135,14 +157,13 @@ Importer:
 
 
 
-
 # NGINX configuration
 ## A more technical overview of Hypernode's Nginx implementation.
 Additional context: https://docs.hypernode.com/hypernode-platform/nginx/how-to-use-nginx.html#inclusion-order
 
-Files: 
+Files/context blocks.
 http.* 
-Can only be placed in the /data/web/nginx directory. Logic in any http file applies to all managed vhosts. 
+Can only be placed in the /data/web/nginx directory. Logic in any http.* file applies to all managed vhosts. 
 
 server.*
 May be placed in a subdirectory to make the logic only apply for a specific vHost.
