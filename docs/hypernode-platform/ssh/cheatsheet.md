@@ -19,11 +19,14 @@ It also functions as a method of documenting our custom commands in a more organ
 
 
 ### List the top 5 bots and the amount of requests sent to the node yesterday & today.
+```
 pnl --yesterday --php --bots --fields ua | sort | uniq -c | sort -n | tail -n 5; \
 pnl --today --php --bots --fields ua | sort | uniq -c | sort -n | tail -n 5;
+```
 
 ### You may also use a loop to go through more than 1 day in 1 command: 
 #### Show last 7 days of bot traffic by day.
+```
 for i in {00..6}; do
     printf "Days ago: $i \n"
     if [ "$i" -eq 0 ]; then
@@ -34,18 +37,25 @@ for i in {00..6}; do
         printf "\n"
     fi
 done
+```
 
 ### List the 5 IP addresses that sent the most requests to the server.
+```
 pnl --today  --fields ip | sort | uniq -c | sort -n | tail -n 5
-
+```
 ### List the 10 countries that sent the most requests to your node today. Sorted by amount of requests.
+```
 pnl --today --fields country | sus | tail -10
+```
 
 ### List amount of requests per IP for a url containing the word 'image', sorted by amount of requests today. 
+```
 pnl --today --fields remote_addr,req --filter req~image | sort | uniq |
     cut -d' ' -f1 | sort | uniq -c | sort -n | grep -v ' 1 ' | tail -n 5;
+```
 
 ### Embedded documentation
+```
 usage: hypernode-parse-nginx-log [-h] [--fields FIELDS] [--php] [--bots] [--format FORMAT] [--list-fields] [--filter FILTER] [--verbose] [--ncsa] [--filename FILENAME | --today | --yesterday | --days-ago DAYS_AGO | --date DATE]
 
 options:
@@ -77,23 +87,29 @@ options:
   --days-ago DAYS_AGO  Analyze logs and outputs for a specific number of days ago
   
   --date DATE          Analyze logs and outputs for a specific date
-
+```
 
 
 
 # Hypernode-Manage-Vhosts \ HMV
  
 ## Enabling Varnish
+```
 hmv [VHOST] --varnish
+```
 
 ## Request free SSL certificates using LetsEncrypt & force HTTPS
+```
 hmv --all --https --force-https
+```
 
 ## Manually set webroot directory
+```
 hmv [VHOST/Domain] --webroot /data/web/exampledirectory
+```
 
 ## Embedded documentation
-hmv --help
+```
 usage: main.py [-h] [--all] [-v] [--varnish] [--default-server]
                [--type {magento2,vuestorefront,ab-test,shopware5,wordpress,shopware6,pwa-studio,psb,magento1,akeneo4,mailhog,generic-php,akeneo,wwwizer}] [--webroot WEBROOT]
                [--delete] [--skip-event] [--handler {phpfpm}] [-y | -n] [--https] [--force-https] [--ssl-config {modern,intermediate}] [--ssl-noclobber] [--port-http PORT_HTTP]
@@ -154,22 +170,30 @@ Importer:
                         Files to protect: these will not be overwritten
   --import-dir IMPORT_DIR
                         Location of the imported nginx directory
+```
 
 # Hypernode-systemctl
 ## A tool which allows you to use specific root commands as a non-root user.
+```
 usage: hypernode-systemctl [-h] [--verbose]
                            {settings,alternative_php_versions,show,whitelist,block_attack,xgrade,autoscaling,list_xgrades,attach_backup,list_backups,create_backup,preinstall,brancher}
+```
 
 ## List enabled alternative PHP Versions.
+```
 hypernode-systemctl alternative_php_versions list
+```
 
+```
 ## Enable alternative PHP Version.
 hypernode-systemctl alternative_php_versions [Version | eg. 8.0]
+```
 
 ## Manually create a backup. Only available if you are on the standard SLA. (Not on basic)
+```
 hypernode-systemctl create_backup
 > Create backup job posted, see hypernode-log (or livelog) for job progress. This backup can be attached by using the 'hypernode-systemctl attach_backup' command. 
-
+```
 
 # NGINX configuration
 ## A more technical overview of Hypernode's Nginx implementation.
