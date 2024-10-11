@@ -14,18 +14,18 @@ It also functions as a method of documenting our custom commands in a more organ
 
 
 # PNL (Parse-Nginx-Log) Reference.
-## PNL Is a JSON parser. It's meant to be used to make nginx logs easier to read and filter.
-## Here are a few examples that I use very often as a support engineer at Hypernode.
+PNL Is a JSON parser. It's meant to be used to make nginx logs easier to read and filter.
+Here are a few examples that I use very often as a support engineer at Hypernode.
 
 
-### List the top 5 bots and the amount of requests sent to the node yesterday & today.
+## List the top 5 bots and the amount of requests sent to the node yesterday & today.
 ```
 pnl --yesterday --php --bots --fields ua | sort | uniq -c | sort -n | tail -n 5; \
 pnl --today --php --bots --fields ua | sort | uniq -c | sort -n | tail -n 5;
 ```
 
-### You may also use a loop to go through more than 1 day in 1 command: 
-#### Show last 7 days of bot traffic by day.
+## You may also use a loop to go through more than 1 day in 1 command: 
+### Show last 7 days of bot traffic by day.
 ```
 for i in {00..6}; do
     printf "Days ago: $i \n"
