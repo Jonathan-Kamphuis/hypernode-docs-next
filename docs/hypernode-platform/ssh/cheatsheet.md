@@ -199,16 +199,24 @@ hypernode-systemctl create_backup
 ## A more technical overview of Hypernode's Nginx implementation.
 Additional context: https://docs.hypernode.com/hypernode-platform/nginx/how-to-use-nginx.html#inclusion-order
 
-Files/context blocks.
-http.* 
+### Files/context blocks.
 Can only be placed in the /data/web/nginx directory. Logic in any http.* file applies to all managed vhosts. 
+```
+http.* 
+```
 
-server.*
 May be placed in a subdirectory to make the logic only apply for a specific vHost.
+```
+server.*
+```
 
-staging.*
 Any files using this naming scheme will apply to the staging instance of a specified vHost.
 You specify the vhost the logic applies to by deciding which subdirectory you place the file in.
+```
+staging.*
+```
 
-public.*
 Opposite of staging.*
+```
+public.*
+```
