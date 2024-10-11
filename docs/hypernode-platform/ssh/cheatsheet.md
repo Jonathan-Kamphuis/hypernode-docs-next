@@ -200,7 +200,7 @@ hypernode-systemctl create_backup
 Additional context: https://docs.hypernode.com/hypernode-platform/nginx/how-to-use-nginx.html#inclusion-order
 
 ### Files/context blocks.
-Can only be placed in the /data/web/nginx directory. Logic in any http.* file applies to all managed vhosts. 
+Can only be placed in the /data/web/nginx directory. Logic in any http.* file applies to all managed vhosts unless it is overwritten by a file that is loaded later.
 ```
 http.* 
 ```
