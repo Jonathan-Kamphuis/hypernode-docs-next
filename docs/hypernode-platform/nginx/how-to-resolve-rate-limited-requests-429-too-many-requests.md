@@ -159,7 +159,7 @@ geo $conn_limit_map {
 }
 ```
 
-**Warning: Only use this setting for debugging purposed! Using this setting on production Hypernodes is highly discouraged, as your shop can be easily taken offline by a single IP using slow and/or flood attacks.**
+**Warning: Only use this setting for debugging purposes! Using this setting on production Hypernodes is highly discouraged, as your shop can be easily taken offline by a single IP using slow and/or flood attacks.**
 
 ### Exclude Specific URLs from the per IP Rate Limiting Mechanism
 
