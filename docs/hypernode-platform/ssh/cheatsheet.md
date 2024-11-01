@@ -38,6 +38,10 @@ for i in {00..6}; do
     fi
 done
 ```
+## Get your Hypernode API token
+```
+cat /etc/hypernode/app.json | grep hypernode_api_token
+```
 
 ### List the 5 IP addresses that sent the most requests to the server.
 ```
