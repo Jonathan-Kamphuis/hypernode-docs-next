@@ -13,10 +13,23 @@ It also functions as a method of documenting our custom commands in a more organ
 
 
 
-# PNL (Parse-Nginx-Log) Reference.
-PNL Is a JSON parser. It's meant to be used to make nginx logs easier to read and filter.
-Here are a few examples that I use very often as a support engineer at Hypernode.
+# Cheatsheet hypernode troubleshooting
 
+## Support-only commands:
+Check connections being blocked by our firewall.
+`sudo /usr/sbin/iptables -L -n -t mangle`
+
+## MySQL permissions error
+`hypernode-fix-mysql-permissions`
+
+## Check memory fragmentation
+`cat /proc/buddyinfo`
+Example output: 
+```
+Node 0, zone      DMA      0      0      0      0      0      0      0      0      1      1      2
+Node 0, zone    DMA32  17423   3992   1433    775    255     73      8      6      4     89    337
+Node 0, zone   Normal  25740  36979  27874  10967   3958    934    217     56     16     92     30
+```
 
 ## List the top 5 bots and the amount of requests sent to the node yesterday & today.
 ```
