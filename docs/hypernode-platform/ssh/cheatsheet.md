@@ -41,11 +41,12 @@ pnl --today --php --bots --fields ua | sort | uniq -c | sort -n | tail -n 5;
 ### Show last 7 days of bot traffic by day.
 ```
 for i in {00..6}; do
-    printf "Days ago: $i \n"
     if [ "$i" -eq 0 ]; then
+        printf "Today \n"
         hypernode-parse-nginx-log --today --php --bots --fields ua | sort | uniq -c | sort -n | tail -n 5
         printf "\n"
     else
+        printf "Days ago: $i \n"
         hypernode-parse-nginx-log --days-ago "$i" --php --bots --fields ua | sort | uniq -c | sort -n | tail -n 5
         printf "\n"
     fi
