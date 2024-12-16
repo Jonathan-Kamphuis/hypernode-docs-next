@@ -22,6 +22,19 @@ Check connections being blocked by our firewall.
 ## MySQL permissions error
 `hypernode-fix-mysql-permissions`
 
+## Set PHP variables for a project
+To set custom PHP variables, like changing the max_upload_size, you should create a .user.ini file in your project-root.
+Eg. 
+```
+cat /data/web/projectname/.user.ini
+
+max_execution_time = 60
+memory_limit = 256M
+upload_max_filesize = 50M
+post_max_size = 50M
+```
+These directives will apply to PHP scripts running in that directory and its subdirectories.
+
 ## Check memory fragmentation
 `cat /proc/buddyinfo`
 Example output: 
